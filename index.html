@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa;
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            padding-top: 50px;
+        }
+        .container {
+            width: 300px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333333;
+            margin-bottom: 20px;
+        }
+        a {
+            display: block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        a:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Online Student Marks Alerting System!</h1>
+        <a href="{{ url_for('marks') }}">Submit Marks</a>
+        <a href="{{ url_for('view_data') }}">View Marks</a>
+    </div>
+</body>
+</html>

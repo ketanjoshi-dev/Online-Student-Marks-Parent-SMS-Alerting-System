@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Submit Marks</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa;
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            padding-top: 50px;
+        }
+        .container {
+            width: 400px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333333;
+            margin-bottom: 20px;
+        }
+        form {
+            text-align: left;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type=text], input[type=number] {
+            width: calc(100% - 20px);
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        input[type=submit] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+        .return-home {
+            display: block;
+            background-color: #2196F3;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+        .return-home:hover {
+            background-color: #1976D2;
+        }
+        .message {
+            list-style-type: none;
+            padding: 0;
+        }
+        .message li {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .danger {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Submit Student Marks</h1>
+        <!-- Flash messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul class="message">
+                    {% for category, message in messages %}
+                        <li class="{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% set messages = None %}
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="/marks">
+            <label for="student_id">Student ID:</label><br>
+            <input type="text" id="student_id" name="student_id" required><br><br>
+            <label for="subject">Subject:</label><br>
+            <input type="text" id="subject" name="subject" required><br><br>
+            <label for="mark">Mark:</label><br>
+            <input type="number" id="mark" name="mark" required><br><br>
+            <input type="submit" value="Submit">
+        </form>
+        <a href="{{ url_for('index') }}" class="return-home">Return to Home</a>
+    </div>
+</body>
+</html>
